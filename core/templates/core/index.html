@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Aplicativos{% endblock %}
+
+{% block content %}
+<div class="container-fluid col-lg-8">
+    <div class="alert alert-secondary" role="alert">
+        <h5 style="text-align: center;">{% now "l, j F Y" %}</h5>
+        <h3 style="text-align: center;">{% now "G:i" %}</h3>
+    </div>
+
+    <div class="row">
+        <div class="data-hora d-flex justify-content-center p-2">
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col apps-titulo d-flex justify-content-center">
+            <h2>Aplicativos</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col d-flex justify-content-center flex-wrap aplicativos">
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/pdv_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Ponto de Vendas</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/caixa_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Caixa</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/vendas_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Vendas</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/entrega_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Entregas</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location=`{% url 'produtos:listar' %}`;">
+                    <img src="/static/img/produtos_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Produtos</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/estoque_icon.png" width="90px" height="90px" alt="Ponto de Vendas">
+                    <figcaption>Estoque</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/producao_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Produção</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/pdv_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Financeiro</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/pdv_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Colaboradores</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/pdv_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Clientes</figcaption>
+                </div>
+
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/pdv_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Fornecedores</figcaption>
+                </div>
+                <div class="col-md-4 btns d-flex justify-content-around align-items-center" style="cursor: pointer;" onclick="window.location='login.html';">
+                    <img src="/static/img/cfg_icon.png" width="100px" height="100px" alt="Ponto de Vendas">
+                    <figcaption>Configurações</figcaption>
+                </div>
+
+            </div>
+    </div>
+
+</div>
+
+{% endblock %}

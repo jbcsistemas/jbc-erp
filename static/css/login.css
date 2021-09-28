@@ -1,0 +1,19 @@
+#login-form label {
+    display: block;
+    text-align: center;
+}
+
+#saudacao {
+    background-color: #1f0726ff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: white;
+    height: 60px;
+}
+
+#form-login {
+    background-color: white;
+    border: 1px solid darkgray;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

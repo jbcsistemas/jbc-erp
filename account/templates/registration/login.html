@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Entrar {% endblock %}
+
+
+{% block content %}
+
+<center>
+    <h1>Entre com sua conta</h1><br>
+</center>
+
+<div class="row d-flex justify-content-center align-items-center p-2" id="login-row">
+    <div class="col-xl-3 col-lg-4 col-md-5" id="login-coluna">
+
+        <div class="row" id="saudacao">
+            <h1 class="d-flex justify-content-center align-items-center">Bem-vindo(a)</h1>
+        </div>
+        <div class="row" id="form-login">
+            <div class="login-form p-2">
+                <form action="{% url 'login' %}" method="POST" id="login-form">
+                    {{form.as_p}}
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <p><center><input type="submit" value="Entrar" class="btn btn-outline-success"></center></p>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

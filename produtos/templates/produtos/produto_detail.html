@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ produto.nome }}{% endblock %}
+
+{% block content %}
+
+
+<div class="container col-lg-7 p-2">
+
+    <div>
+        <h1 class="p-2">Detalhes e atualização</h1>
+    </div>
+
+    <form action="{% url 'produtos:detalhes' produto.id %}" method="POST">{% csrf_token %}
+        <div class="row g-3">
+            <div class="form-check form-switch mb-3 col-md-12">
+                {{ form.disponivel }}
+                <label class="form-check-label" for="flexSwDisp">Disponível</label>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                {{ form.codigo_barras }}
+                <label for="floatingBarras">Código de barras</label>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                {{ form.nome }}
+                <label for="floatingNome">Nome</label>
+            </div>
+            <div class="form-floating mb-3 col-12">
+                {{ form.descricacao }}
+                <label for="floatingDesc">Descrição</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.custo }}
+                <label for="floatingCusto">Custo</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.preco }}
+                <label for="floatingPreco">Preço</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.categoria }}
+                <label for="floatingCate">Categoria</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.marca }}
+                <label for="floatingMarca">Marca</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.fornecedor }}
+                <label for="floatingForn">Fornecedor</label>
+            </div>
+        </div>
+        <div class="row g-3 d-flex justify-content-center">
+            <div class="btn-group btn-group-lg col-md-8" role="group" aria-label="Ações de cancelar e cadastrar">
+                <a class="btn btn-danger" href="{% url 'produtos:excluir' produto.id %}"><b>Excluir</b></a>
+                <a class="btn btn-secondary" href="{% url 'produtos:listar' %}">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

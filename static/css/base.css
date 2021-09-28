@@ -1,0 +1,85 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+/* cores */
+
+body {
+    background-color: #fefcf6ff;
+}
+
+header {
+    background-color: #3c0435ff;
+    color: white;
+    height: 60px;
+    line-height: 50px;
+}
+
+h1, h4 {
+    margin: 0;
+}
+
+footer {
+    background-color: #3c0435ff;
+    color: white;
+    height: 80px;
+    line-height: 50px;
+    padding: 0 20px;
+}
+
+/* Aplicativos */
+
+.row > .col > .col,
+.row > .col > [class^=col-] {
+    background-color: #590144ff;
+    color: white;
+}
+
+div.btns figcaption {
+    text-align: center;
+}
+
+div.bt-pdv {
+    min-width: 100%;
+    min-height: 100%;
+}
+div.btns {
+    width: 220px;
+    height: 120px;
+    padding: 12px;
+    margin: 15px;
+    border-radius: 8px;
+}
+
+div.aplicativos {
+    background-color: #DFDFDF;
+    margin: 0px 20px 20px 20px;
+    padding: 10px;
+    border: 1px solid #590144ff;
+    border-top: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+div.apps-titulo {
+    background-color: #3c0435ff;
+    color: white;
+    margin: 0px 20px 0px 20px;
+    padding: 10px;
+    border: 1px solid #590144ff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
