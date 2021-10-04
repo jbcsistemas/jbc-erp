@@ -1,14 +1,14 @@
 from django.db import models
 from django.urls import reverse
-
-# Create your models here.
-
+from pessoas.models import Fornecedor
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=15,
                             unique=True)
     slug = models.SlugField(max_length=100,
                             unique=True)
+    fornecedores = models.ManyToManyField(Fornecedor,
+                                          related_name='categorias')
 
     class Meta:
         ordering = ('nome',)
@@ -23,8 +23,11 @@ class Marca(models.Model):
     nome = models.CharField(max_length=30)
     categoria = models.ForeignKey(Categoria,
                                   related_name='marcas',
-                                  on_delete=models.CASCADE)
+                                  null=True,
+                                  on_delete=models.SET_NULL)
     slug = models.SlugField(max_length=100)
+    fornecedores = models.ManyToManyField(Fornecedor,
+                                          related_name='marcas')
 
     class Meta:
         ordering = ('nome',)
@@ -45,11 +48,15 @@ class Produto(models.Model):
                                 decimal_places=2)
     slug = models.SlugField(max_length=100,
                             db_index=True)
+    fornecedores = models.ManyToManyField(Fornecedor,
+                                          related_name='produtos')
     categoria = models.ForeignKey(Categoria,
                                   related_name='produtos',
-                                  on_delete=models.CASCADE)
-    marca = models.CharField(max_length=15) # receberá uma chave estrangeira
-    fornecedor = models.CharField(max_length=15) # situação de 'marca'
+                                  null=True,
+                                  on_delete=models.SET_NULL)
+    marca = models.ForeignKey(Marca,
+                              null=True,
+                              on_delete=models.SET_NULL)
     criado = models.DateTimeField(auto_now_add=True)
     atualizado = models.DateTimeField(auto_now=True)
     disponivel = models.BooleanField(default=True)
