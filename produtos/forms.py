@@ -1,5 +1,46 @@
 from django.forms import ModelForm, widgets
-from .models import Produto
+from .models import Categoria, Marca, Produto
+
+class RegistroCategoriaForm(ModelForm):
+    class Meta:
+        model = Categoria
+        exclude = ('slug',)
+        widgets = {
+            'nome': widgets.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Nome',
+                'id': 'floatingNome',
+            }),
+            'fornecedores': widgets.SelectMultiple(attrs={
+                'class': 'form-control',
+                'placeholder': 'Fornecedores',
+                'id': 'floatingFornecedor',
+            })
+        }
+
+
+class RegistroMarcaForm(ModelForm):
+    class Meta:
+        model = Marca
+        exclude = ('slug',)
+        widgets = {
+            'nome': widgets.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Nome',
+                'id': 'floatingNome',
+            }),
+            'categoria': widgets.Select(attrs={
+                'class': 'form-control',
+                'placeholder': 'Categoria',
+                'id': 'floatingCategoria',
+            }),
+            'fornecedores': widgets.SelectMultiple(attrs={
+                'class': 'form-control',
+                'placeholder': 'Fornecedores',
+                'id': 'floatingFornecedores',
+            })
+        }
+
 
 class RegistroProdutosForm(ModelForm):
     class Meta:
@@ -37,14 +78,14 @@ class RegistroProdutosForm(ModelForm):
                 'placeholder': 'Categoria',
                 'id': 'floatingCate',
             }),
-            'marca': widgets.TextInput(attrs={
-                'class': 'form-control',
+            'marca': widgets.Select(attrs={
+                'class': 'form-select',
                 'placeholder': 'Marca',
                 'id': 'floatingMarca',
             }),
-            'fornecedor': widgets.Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Fornecedor',
+            'fornecedores': widgets.Select(attrs={
+                'class': 'form-select',
+                'placeholder': 'Fornecedores',
                 'id': 'floatingForn',
             }),
             'disponivel': widgets.CheckboxInput(attrs={

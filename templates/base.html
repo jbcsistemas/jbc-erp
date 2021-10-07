@@ -16,14 +16,14 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #3c0435ff;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'aplicativos' %}"><b>Supermercado</b></a>
+            <a class="navbar-brand" href="{% url 'core:aplicativos' %}"><b>Supermercado</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'aplicativos' %}">Início</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'core:aplicativos' %}">Início</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Suporte</a>
@@ -42,6 +42,7 @@
                             Olá, {{ user.first_name }}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                          <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                           <li><a class="dropdown-item" href="#">Conta</a></li>
                           <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
                         </ul>

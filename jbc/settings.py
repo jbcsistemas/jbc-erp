@@ -178,7 +178,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'aplicativos'
+LOGIN_REDIRECT_URL = 'core:aplicativos'
 
 LOGIN_URL = 'login'
 

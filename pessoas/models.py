@@ -4,7 +4,9 @@ from django.utils import timezone
 class DadosGerais(models.Model):
     endereco = models.CharField(max_length=30)
     endereco_numero = models.CharField(max_length=6)
-    endereco_complemento = models.CharField(max_length=15)
+    endereco_complemento = models.CharField(max_length=35,
+                                            blank=True,
+                                            null=True)
     cidade = models.CharField(max_length=20)
     estado = models.CharField(max_length=20)
     criado = models.DateTimeField(auto_now_add=True)
@@ -16,14 +18,15 @@ class DadosGerais(models.Model):
 
 class PessoaFisica(models.Model):
     nome_completo = models.CharField(max_length=80)
-    apelido = models.CharField(max_length=15)
+    apelido = models.CharField(max_length=15,
+                               null=True)
     cpf = models.CharField(max_length=15,
                            unique=True,
                            db_index=True)
     rg = models.CharField(max_length=15,
                           unique=True,
                           db_index=True)
-    nascimento = models.DateTimeField()
+    nascimento = models.DateField(null=True)
     
     class Meta:
         abstract = True
@@ -47,7 +50,8 @@ class Cliente(PessoaFisica, PessoaJuridica, DadosGerais):
                                     choices=TIPO_CLIENTE_CHOICES,
                                     default='F')
     limite_fiado = models.DecimalField(max_digits=7,
-                                       decimal_places=2)
+                                       decimal_places=2,
+                                       null=True)
 
     class Meta(PessoaFisica.Meta, PessoaJuridica.Meta, DadosGerais.Meta):
         pass

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Cliente {{ cliente.nome }}{% endblock %}
+
+{% block content %}
+
+
+<form method="POST">{% csrf_token %}
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Deseja excluir {{ cliente.nome }}?</h4>
+        <p>Cuidado! Ao excluir um item ele não poderá ser recuperado e terá que ser cadastrado novamente</p>
+        <hr>
+        <p class="mb-0">Clique em <strong>confirmar</strong> para excluir o Cliente.</p>
+    </div>
+    <input type="submit" class="btn btn-danger" value="Confirmar">
+</form>
+
+{% endblock %}

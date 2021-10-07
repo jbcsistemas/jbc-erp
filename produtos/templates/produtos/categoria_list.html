@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Categorias{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Categorias</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="#">Ordenar</a>
+        <a class="nav-link" href="#">Quantidade</a>
+      </div>
+    <form class="d-flex">
+     <input class="form-control me-2" type="search" placeholder="Localizar" aria-label="Localizar">
+     <div class="d-grid gap-2 d-flex justify-content-end">
+         <button class="btn btn-success" type="submit">OK</button>
+         <a class="btn btn-primary" href="{% url 'produtos:categoria-registrar' %}">Novo</a>
+     </div>
+    </form> 
+    </div>
+
+  </div>
+</nav>
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Fornecedores</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in object_list %}
+                <tr onclick="document.location = '{{ categoria.get_absolute_url }}';">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ marca.nome|upper }}</td>
+                    <td>{{ marca.fornecedores|upper }}</td>
+                </tr>
+                {% empty %}
+                    <li>Não existem categorias cadastradas.</li>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
