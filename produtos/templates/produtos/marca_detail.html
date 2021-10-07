@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ marca.nome }}{% endblock %}
+
+{% block content %}
+
+
+<div class="container col-lg-7 p-2">
+
+    <div>
+        <h1 class="p-2">Detalhes e atualização</h1>
+    </div>
+
+    <form action="{% url 'categoria:detalhes' categoria.id %}" method="POST">{% csrf_token %}
+        <div class="row g-3">
+            <div class="form-floating mb-3 col-md-6">
+                {{ form.nome }}
+                <label for="floatingNome">Nome</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.categoria }}
+                <label for="floatingForn">Categoria</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.fornecedores }}
+                <label for="floatingForn">Fornecedores</label>
+            </div>
+        </div>
+        <div class="row g-3 d-flex justify-content-center">
+            <div class="btn-group btn-group-lg col-md-8" role="group" aria-label="Ações de cancelar e cadastrar">
+                <a class="btn btn-danger" href="{% url 'produtos:marca-excluir' marca.id %}"><b>Excluir</b></a>
+                <a class="btn btn-secondary" href="{% url 'produtos:marca-listar' %}">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

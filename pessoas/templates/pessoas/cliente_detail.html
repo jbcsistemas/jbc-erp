@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ cliente.nome }}{% endblock %}
+
+{% block content %}
+
+
+<div class="container col-lg-7 p-2">
+
+    <div>
+        <h1 class="p-2">Detalhes e atualização</h1>
+    </div>
+
+    <form action="{% url 'pessoas:detalhe-cliente' cliente.id %}" method="POST">{% csrf_token %}
+        <div class="row g-3">
+            <div class="form-check">
+                <input class="form-check-input" for="{{ tipo_cliente }}" type="radio" name="flexRadioDefault" value="F" id="F" onchange="displayFields(this.value)" />
+                <label class="form-check-label" for="F">
+                    Física
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" for="{{ tipo_cliente }}" type="radio" name="flexRadioDefault" value="J" id="J" onchange="displayFields(this.value)" />
+                <label class="form-check-label" for="J">
+                    Jurídica
+                </label>
+            </div>
+            <div id="pessoaF" style="display: none;">
+                <div class="form-floating mb-3 col-md-9">
+                    {{ form.cpf }}
+                    <label for="floatingCPF">CPF</label>
+                </div>
+                <div class="form-floating mb-3 col-md-12">
+                    {{ form.nome_completo }}
+                    <label for="floatingNomeCompleto">Nome Completo</label>
+                </div>
+                <div class="form-floating mb-3 col-md-6">
+                    {{ form.apelido }}
+                    <label for="floatingApelido">Apelido</label>
+                </div>
+                <div class="form-floating mb-3 col-md-6">
+                    {{ form.rg }}
+                    <label for="floatingRG">RG</label>
+                </div>
+                <div class="form-floating mb-3 col-md-6">
+                    {{ form.nascimento }}
+                    <label for="floatingNascimento">Nascimento</label>
+                </div>
+            </div>
+            <div id="pessoaJ" style="display: none;">
+                <div class="form-floating mb-3 col-md-9">
+                    {{ form.cnpj }}
+                    <label for="floatingCNPJ">CNPJ</label>
+                </div>
+                <div class="form-floating mb-3 col-md-12">
+                    {{ form.razao_social }}
+                    <label for="floatingRSocial">Razão Social</label>
+                </div>
+                <div class="form-floating mb-3 col-md-12">
+                    {{ form.nome_fantasia }}
+                    <label for="floatingNFantasia">Nome Fantasia</label>
+                </div>
+            </div>
+            <div class="form-floating mb-3 col-md-9">
+                {{ form.endereco }}
+                <label for="floatingEndereco">Endereço</label>
+            </div>
+            <div class="form-floating mb-3 col-md-3">
+                {{ form.endereco_numero }}
+                <label for="floatingNumero">Número</label>
+            </div>
+            <div class="form-floating mb-3 col-md-12">
+                {{ form.endereco_complemento }}
+                <label for="floatingComplento">Complemento</label>
+            </div>
+            <div class="form-floating mb-3 col-md-8">
+                {{ form.cidade }}
+                <label for="floatingCidade">Cidade</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.estado }}
+                <label for="floatingEstado">Estado</label>
+            </div>
+            <div class="form-floating mb-3 col-md-4">
+                {{ form.limite_fiado }}
+                <label for="floatingLimite">Limite</label>
+            </div>
+        </div>
+        <div class="row g-3 d-flex justify-content-center">
+            <div class="btn-group btn-group-lg col-md-8" role="group" aria-label="Ações de cancelar e cadastrar">
+                <a class="btn btn-danger" href="{% url 'pessoas:excluir-cliente' cliente.id %}"><b>Excluir</b></a>
+                <a class="btn btn-danger" href="{% url 'pessoas:listar-clientes' %}">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
